@@ -1,14 +1,32 @@
 import Link from "next/link";
-import Loading from "../loading";
 import { Metadata } from "next";
-import { Suspense } from "react";
 import { TicketList } from "@/app/components";
+import { cookies } from "next/headers";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
+
+export interface TicketElement {
+  id: number;
+  title: string;
+  body: string;
+  priority: string;
+  user_email: string;
+}
 
 export const metadata: Metadata = {
     title: "NB Tickets - Tickets",
 };
 
-const Tickets = () => {
+const getTickets = async () => {
+  const supabase = createServerComponentClient({ cookies });
+  const { error, data } = await supabase.from("tickets").select();
+  if(error) throw new Error(error.message);
+
+  return data as TicketElement[];
+}
+
+const Tickets = async () => {
+  const tickets = await getTickets();
+
     return (
       <section className="py-12">
         <article className="mb-8 flex justify-between items-center">
@@ -20,9 +38,7 @@ const Tickets = () => {
           <Link href={"/tickets/create"} className="btn btn-s btn-prim">Add Ticket</Link>
         </article>
 
-        <Suspense fallback={<Loading />}>
-          <TicketList />
-        </Suspense>
+        <TicketList tickets={tickets} />
       </section>
     );
 }

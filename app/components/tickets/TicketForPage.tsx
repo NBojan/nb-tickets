@@ -1,9 +1,8 @@
 "use server"
-
 import DeleteTicket from "./DeleteTicket";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";
-import { TicketElement } from "./TicketList";
+import { TicketElement } from "@/app/(dashboard)/tickets/page";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
 const getTicket = async (id:string) => {
