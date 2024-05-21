@@ -1,14 +1,14 @@
+import Link from "next/link";
 import Loading from "../loading";
 import { Metadata } from "next";
 import { Suspense } from "react";
 import { TicketList } from "@/app/components";
-import Link from "next/link";
 
 export const metadata: Metadata = {
     title: "NB Tickets - Tickets",
 };
 
-const Tickets = async () => {
+const Tickets = () => {
     return (
       <section className="py-12">
         <article className="mb-8 flex justify-between items-center">
