@@ -5,6 +5,8 @@ import { Suspense } from "react";
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
+export const dynamic = 'force-dynamic';
+
 export const generateMetadata = async ({ params: { id } } : { params: { id: string } }) => {
     const supabase = createServerComponentClient({ cookies });
 

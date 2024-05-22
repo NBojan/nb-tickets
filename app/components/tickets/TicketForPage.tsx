@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { TicketElement } from "@/app/(dashboard)/tickets/page";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
+export const dynamic = 'force-dynamic';
+
 const getTicket = async (id:string) => {
     const supabase = createServerComponentClient({ cookies });
 
