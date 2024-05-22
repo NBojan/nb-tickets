@@ -4,6 +4,8 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 import { TicketList } from "@/app/components";
 
+export const dynamic = 'force-dynamic';
+ 
 export interface TicketElement {
   id: number;
   title: string;
