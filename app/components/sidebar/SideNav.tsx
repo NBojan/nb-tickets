@@ -1,3 +1,4 @@
+"use client"
 import Link from "next/link";
 import { HiX } from "react-icons/hi";
 import { SiDarkreader } from "react-icons/si";

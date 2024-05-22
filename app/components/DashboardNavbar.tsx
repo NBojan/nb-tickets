@@ -1,4 +1,5 @@
 import Link from "next/link";
+// import SidebarBtn from "./SidebarBtn";
 import { LogoutBtn, SidebarBtn } from ".";
 import { SiDarkreader } from "react-icons/si";
 import { Session } from "@supabase/supabase-js";

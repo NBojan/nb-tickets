@@ -1,8 +1,8 @@
 import Link from "next/link";
 import Loading from "../loading";
+import TicketForPage from "@/app/components/tickets/TicketForPage";
 import { Suspense } from "react";
 import { cookies } from "next/headers";
-import TicketForPage from "@/app/components/tickets/TicketForPage";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
 export const generateMetadata = async ({ params: { id } } : { params: { id: string } }) => {

@@ -1,4 +1,3 @@
-"use server"
 import DeleteTicket from "./DeleteTicket";
 import { cookies } from "next/headers";
 import { notFound } from "next/navigation";

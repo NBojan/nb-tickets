@@ -15,18 +15,18 @@ export default async function Layout({
   children: React.ReactNode;
 }>) {
   const supabase = createServerComponentClient({ cookies });
-  const { data, error } = await supabase.auth.getSession();
+  const { data } = await supabase.auth.getSession();
 
   if (!data.session) {
     return redirect("/login");
   }
   return (
-    <AppProvider>
-      <main className="container lg:max-w-[1024px] mx-auto">
+    <main className="container lg:max-w-[1024px] mx-auto">
+      <AppProvider>
         <DashboardNavbar session={data.session} />
         <Sidebar session={data.session} />
         {children}
-      </main>
-    </AppProvider>
-  )
+      </AppProvider>
+    </main>
+  );
 }

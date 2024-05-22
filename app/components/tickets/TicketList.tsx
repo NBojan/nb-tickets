@@ -1,7 +1,26 @@
 import { Ticket } from "..";
-import { TicketElement } from "@/app/(dashboard)/tickets/page";
+import { cookies } from "next/headers";
+import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
-const TicketList = async ({ tickets } : { tickets:TicketElement[] }) => {
+export interface TicketElement {
+  id: number;
+  title: string;
+  body: string;
+  priority: string;
+  user_email: string;
+}
+
+const getTickets = async () => {
+  const supabase = createServerComponentClient({ cookies });
+  const { error, data } = await supabase.from("tickets").select();
+  if(error) throw new Error(error.message);
+
+  return data as TicketElement[];
+}
+
+const TicketList = async () => {
+  const tickets = await getTickets();
+
     return (  
         <article className="space-y-4">
           {tickets.length > 0 ? (
