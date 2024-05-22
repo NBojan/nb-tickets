@@ -2,6 +2,8 @@ import { Ticket } from "..";
 import { cookies } from "next/headers";
 import { createServerComponentClient } from "@supabase/auth-helpers-nextjs";
 
+export const dynamic = 'force-dynamic' ;
+
 export interface TicketElement {
   id: number;
   title: string;
